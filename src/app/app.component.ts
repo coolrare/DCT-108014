@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { chartAreaDemo } from './chartAreaDemo';
-import { chartPieDemo } from './chartPieDemo';
+import { chartAreaDemo } from './chart-area-demo';
+import { chartPieDemo } from './chart-pie-demo';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,5 @@ export class AppComponent implements OnInit {
   title = 'demo1';
 
   ngOnInit(): void {
-    chartAreaDemo();
-    chartPieDemo();
   }
 }
