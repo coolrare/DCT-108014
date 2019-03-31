@@ -8,10 +8,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ColorsComponent } from './utilities/colors/colors.component';
-import { AnimationsComponent } from './utilities/animations/animations.component';
-import { BordersComponent } from './utilities/borders/borders.component';
-import { OtherComponent } from './utilities/other/other.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +16,6 @@ import { OtherComponent } from './utilities/other/other.component';
     TablesComponent,
     ChartsComponent,
     NotFoundComponent,
-    ColorsComponent,
-    AnimationsComponent,
-    BordersComponent,
-    OtherComponent
   ],
   imports: [
     BrowserModule,

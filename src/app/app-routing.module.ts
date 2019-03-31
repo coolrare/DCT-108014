@@ -15,14 +15,7 @@ const routes: Routes = [
     loadChildren: './pages/pages.module#PagesModule'
   },
   { path: 'utilities',
-    children: [
-      { path: '', redirectTo: 'other', pathMatch: 'full' },
-      { path: 'colors', component: ColorsComponent },
-      { path: 'colors/:type', component: ColorsComponent },
-      { path: 'borders', component: BordersComponent },
-      { path: 'animations', component: AnimationsComponent  },
-      { path: 'other', component: OtherComponent },
-    ]
+    loadChildren: './utilities/utilities.module#UtilitiesModule'
   },
   { path: 'tables', component: TablesComponent },
   { path: 'charts', component: ChartsComponent },
