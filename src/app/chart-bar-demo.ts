@@ -12,7 +12,7 @@ export function chartBarDemo() {
       prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
       sep = typeof thousands_sep === 'undefined' ? ',' : thousands_sep,
       dec = typeof dec_point === 'undefined' ? '.' : dec_point,
-      s = '',
+      s: string|string[] = '',
       toFixedFix = function(n, prec) {
         var k = Math.pow(10, prec);
         return '' + Math.round(n * k) / k;

@@ -1,2 +1,5 @@
 declare var Chart: any;
-declare var $: any;
+
+interface JQuery {
+  DataTable: any;
+}
