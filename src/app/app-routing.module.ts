@@ -8,17 +8,20 @@ import { ColorsComponent } from './utilities/colors/colors.component';
 import { BordersComponent } from './utilities/borders/borders.component';
 import { AnimationsComponent } from './utilities/animations/animations.component';
 import { OtherComponent } from './utilities/other/other.component';
+import { LayoutComponent } from './layout/layout.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'pages',
-    loadChildren: './pages/pages.module#PagesModule'
+  { path: '', component: LayoutComponent,
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'pages', loadChildren: './pages/pages.module#PagesModule' },
+      { path: 'utilities', loadChildren: './utilities/utilities.module#UtilitiesModule' },
+      { path: 'tables', component: TablesComponent },
+      { path: 'charts', component: ChartsComponent },
+    ]
   },
-  { path: 'utilities',
-    loadChildren: './utilities/utilities.module#UtilitiesModule'
-  },
-  { path: 'tables', component: TablesComponent },
-  { path: 'charts', component: ChartsComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
