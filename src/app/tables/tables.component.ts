@@ -1,14 +1,15 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css']
 })
-export class TablesComponent implements OnInit {
+export class TablesComponent implements OnInit, OnDestroy {
   num = 3;
   data: Sample[] = [];
 
@@ -18,8 +19,10 @@ export class TablesComponent implements OnInit {
     private router: Router
   ) {}
 
+  subs: Subscription;
+
   ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
+    this.subs = this.route.queryParamMap.subscribe(params => {
       if (params.has('num')) {
         this.num = +params.get('num');
       }
@@ -36,6 +39,10 @@ export class TablesComponent implements OnInit {
       .subscribe((data) => {
         this.data = data;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }
 
