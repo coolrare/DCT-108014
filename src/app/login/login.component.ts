@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     document.body.id = '';
     document.body.className = 'bg-gradient-primary';
+  }
+
+  login() {
+    localStorage.setItem('apikey', 'pass');
+    this.router.navigateByUrl('/');
   }
 
 }
