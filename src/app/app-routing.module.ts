@@ -11,6 +11,9 @@ import { OtherComponent } from './utilities/other/other.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
+  { path: 'pages',
+    loadChildren: './pages/pages.module#PagesModule'
+  },
   { path: 'utilities',
     children: [
       { path: '', redirectTo: 'other', pathMatch: 'full' },
