@@ -299,10 +299,10 @@
   <!-- Content Row -->
   <div class="row">
     <!-- First Column -->
-    <div class="col-lg-4">
+    <div class="col-lg-4" *ngIf="type ===0 || type === 1">
       <!-- Custom Text Color Utilities -->
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3" (click)="goNext()">
           <h6 class="m-0 font-weight-bold text-primary">
             Custom Text Color Utilities
           </h6>
@@ -335,10 +335,10 @@
     </div>
 
     <!-- Second Column -->
-    <div class="col-lg-4">
+    <div class="col-lg-4" *ngIf="type ===0 || type === 2">
       <!-- Background Gradient Utilities -->
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3" (click)="goNext()">
           <h6 class="m-0 font-weight-bold text-primary">
             Custom Background Gradient Utilities
           </h6>
@@ -364,10 +364,10 @@
     </div>
 
     <!-- Third Column -->
-    <div class="col-lg-4">
+    <div class="col-lg-4" *ngIf="type ===0 || type === 3">
       <!-- Grayscale Utilities -->
       <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3" (click)="goNext()">
           <h6 class="m-0 font-weight-bold text-primary">
             Custom Grayscale Background Utilities
           </h6>

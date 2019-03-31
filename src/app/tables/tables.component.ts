@@ -1,18 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css']
 })
-export class TablesComponent implements OnInit {
+export class TablesComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  num = 3;
+  data: any = [];
+
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    $(document).ready(function() {
-      $('#dataTable').DataTable();
+    this.route.queryParamMap.subscribe(params => {
+      if (params.has('num')) {
+        this.num = +params.get('num');
+      }
     });
+
+    this.http.get('http://www.mocky.io/v2/5c9e523f3000005500ee97cf').subscribe(data => {
+      this.data = data;
+      setTimeout(() => { $('#dataTable').DataTable(); }, 0);
+    });
+  }
+
+  ngAfterViewInit(): void {
+    // $('#dataTable').DataTable();
   }
 
 }
