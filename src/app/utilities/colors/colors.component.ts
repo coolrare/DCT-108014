@@ -21,6 +21,12 @@ export class ColorsComponent implements OnInit {
   goNext() {
     const newId = ((this.type + 1) % 3) + 1;
     this.router.navigateByUrl('/utilities/colors/' + newId);
+    // this.router.navigate(['/utilities/colors', newId]);
+    // this.router.navigate([newId]);
+    // this.router.navigate([newId], { relativeTo: this.route });
+    // this.router.navigate(['./' + newId], { relativeTo: this.route });
+    // this.router.navigate(['../' + newId], { relativeTo: this.route });
+
   }
 
 }
