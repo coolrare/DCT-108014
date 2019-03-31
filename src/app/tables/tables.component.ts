@@ -23,12 +23,7 @@ export class TablesComponent implements OnInit, AfterViewInit {
 
     this.http.get('http://www.mocky.io/v2/5c9e523f3000005500ee97cf').subscribe(data => {
       this.data = data;
-      setTimeout(() => { $('#dataTable').DataTable(); }, 0);
     });
-  }
-
-  ngAfterViewInit(): void {
-    // $('#dataTable').DataTable();
   }
 
 }
