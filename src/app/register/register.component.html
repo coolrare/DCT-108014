@@ -9,28 +9,36 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
-            <form class="user">
+            <pre>{{ data | json }}</pre>
+            <pre>{{ f.value | json }}</pre>
+            <form class="user" #f="ngForm">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                  <input type="text" class="form-control form-control-user"
+                         name="fName" [(ngModel)]="data.firstName" required
                          placeholder="First Name">
                 </div>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="exampleLastName"
+                  <input type="text" class="form-control form-control-user"
+                         name="lName" [(ngModel)]="data.lastName" required
                          placeholder="Last Name">
                 </div>
               </div>
               <div class="form-group">
                 <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                       name="email" [(ngModel)]="data.email" required email
                        placeholder="Email Address">
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                         name="password" [(ngModel)]="data.password" required
                          placeholder="Password">
                 </div>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
+                         [(ngModel)]="data.password2" required
+                         [ngModelOptions]="{standalone: true}"
                          placeholder="Repeat Password">
                 </div>
               </div>
