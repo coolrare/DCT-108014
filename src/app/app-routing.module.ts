@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { Register2Component } from './register2/register2.component';
 
 const routes: Routes = [
   { path: '', component: LayoutComponent,
@@ -23,6 +24,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register2', component: Register2Component },
   { path: '**', component: NotFoundComponent }
 ];
 

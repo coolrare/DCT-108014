@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { Register2Component } from './register2/register2.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
     LayoutComponent,
     LoginComponent,
     RegisterComponent,
+    Register2Component,
   ],
   imports: [
     BrowserModule,
