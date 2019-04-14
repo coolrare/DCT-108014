@@ -19,7 +19,10 @@ export class Register2Component implements OnInit {
     this.form = this.fb.group({
       firstName: this.fb.control('Will', [Validators.required]),
       lastName: ['Huang', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      emails: this.fb.array([
+        this.fb.control('', [Validators.required, Validators.email]),
+        this.fb.control('', [Validators.required, Validators.email])
+      ]),
       password: ['', [passwordValidator1Fn, passwordValidator2Fn]],
       password2: ['', [
         Validators.required, compareEqual('password'),
