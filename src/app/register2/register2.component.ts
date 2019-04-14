@@ -19,16 +19,16 @@ export class Register2Component implements OnInit {
     this.form = this.fb.group({
       firstName: this.fb.control('Will', [Validators.required]),
       lastName: ['Huang', [Validators.required]],
-      emails: this.fb.array([
-        this.fb.control('', [Validators.required, Validators.email]),
-        this.fb.control('', [Validators.required, Validators.email])
-      ]),
       password: ['', [passwordValidator1Fn, passwordValidator2Fn]],
       password2: ['', [
         Validators.required, compareEqual('password'),
         Validators.minLength(8), Validators.maxLength(16)
       ]]
     });
+
+    this.form.addControl('emails', this.fb.array([]));
+    (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
+    (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
   }
 
   addNewEmail() {
