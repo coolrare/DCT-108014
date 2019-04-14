@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators, FormControl, FormArray } from '@angular/forms';
-import { passwordValidator1Fn, passwordValidator2Fn, compareEqual } from '../shared/passwordValidator1Fn';
+import { passwordValidator1Fn, passwordValidator2Fn, compareEqual, checkUniqEmail } from '../shared/passwordValidator1Fn';
 import { HttpClient } from '@angular/common/http';
 
 export interface UserProfile {
@@ -47,7 +47,7 @@ export class Register2Component implements OnInit {
 
   resetForm() {
     this.form.removeControl('emails');
-    this.form.addControl('emails', this.fb.array([]));
+    this.form.addControl('emails', this.fb.array([], checkUniqEmail));
     for (const email of this.data.emails) {
       (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
     }
