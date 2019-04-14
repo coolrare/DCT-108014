@@ -19,7 +19,7 @@ export interface UserProfile {
 })
 export class Register2Component implements OnInit {
 
-  data = {};
+  data: UserProfile;
   form: FormGroup;
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
@@ -30,6 +30,7 @@ export class Register2Component implements OnInit {
     this.form = this.fb.group({
       firstName: this.fb.control('', [Validators.required]),
       lastName: ['', [Validators.required]],
+      emails: this.fb.array([]),
       password: ['', [passwordValidator1Fn, passwordValidator2Fn]],
       password2: ['', [
         Validators.required, compareEqual('password'),
@@ -37,19 +38,19 @@ export class Register2Component implements OnInit {
       ]]
     });
 
-    this.form.addControl('emails', this.fb.array([]));
-
     this.http.get<UserProfile>('http://www.mocky.io/v2/5cb2f4173000007d00a78ce8')
       .subscribe((user) => {
-        for (const email of user.emails) {
-          (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
-        }
         this.data = user;
-        this.form.setValue(this.data);
+        this.resetForm();
       });
   }
 
   resetForm() {
+    this.form.removeControl('emails');
+    this.form.addControl('emails', this.fb.array([]));
+    for (const email of this.data.emails) {
+      (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
+    }
     this.form.reset(this.data);
   }
 
