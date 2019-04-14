@@ -27,6 +27,7 @@ f.errors = {{f.errors|json}}</pre>
                          name="fName" [(ngModel)]="data.firstName" required
                          #tFirstName="ngModel"
                          [class.error]="tFirstName.invalid && (f.submitted || tFirstName.dirty )"
+                         (click)="setDisabled(tFirstName)"
                          placeholder="First Name">
                   <pre>tFirstName.value = {{tFirstName.value}}
 tFirstName.valid = {{tFirstName.valid}}
@@ -44,6 +45,7 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
                          name="lName" [(ngModel)]="data.lastName" required
                          #tLastName="ngModel"
                          [class.error]="tLastName.invalid && (f.submitted || tLastName.dirty )"
+                         (click)="setDisabled(tLastName)"
                          placeholder="Last Name">
                 </div>
               </div>
@@ -52,6 +54,7 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
                        name="email" [(ngModel)]="data.email" required email
                        #tEmail="ngModel"
                        [class.error]="tEmail.invalid && (f.submitted || tEmail.touched )"
+                       (click)="setDisabled(tEmail)"
                        placeholder="Email Address">
                   <pre *ngIf="tEmail['errors']?.required">請輸入 Email 地址</pre>
                   <pre *ngIf="tEmail['errors']?.email">請輸入合法的 Email 地址</pre>
@@ -63,6 +66,7 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
                          name="password" [(ngModel)]="data.password"
                          required minlength="8" maxlength="16"
                          #tPassword="ngModel"
+                         (click)="setDisabled(tPassword)"
                          [class.error]="tPassword.invalid && (f.submitted)"
                          placeholder="Password">
                 </div>
@@ -73,6 +77,7 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
                          minlength="8" maxlength="16"
                          [compareEqual]="tPassword.value"
                          #tPassword2="ngModel"
+                         (click)="setDisabled(tPassword2)"
                          [class.error]="tPassword2.invalid && (f.submitted)"
                          placeholder="Repeat Password">
                   <pre>{{ tPassword2.errors | json }}</pre>

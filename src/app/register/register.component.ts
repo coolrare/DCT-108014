@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 class RegisterViewModel {
   firstName = '';
@@ -29,6 +29,10 @@ export class RegisterComponent implements OnInit {
     if (form.valid) {
       console.log(form);
     }
+  }
+
+  setDisabled(c: NgModel) {
+    c.control.disable();
   }
 
 }
