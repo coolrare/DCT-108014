@@ -4,13 +4,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsComponent } from './charts/charts.component';
 import { TablesComponent } from './tables/tables.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ColorsComponent } from './utilities/colors/colors.component';
-import { BordersComponent } from './utilities/borders/borders.component';
-import { AnimationsComponent } from './utilities/animations/animations.component';
-import { OtherComponent } from './utilities/other/other.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: LayoutComponent,
@@ -25,6 +22,7 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

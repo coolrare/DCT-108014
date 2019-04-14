@@ -10,6 +10,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LoginComponent } from './login/login.component';
     NotFoundComponent,
     LayoutComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
