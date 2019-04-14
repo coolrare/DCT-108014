@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, NgModel } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register2',
@@ -16,11 +16,17 @@ export class Register2Component implements OnInit {
     document.body.className = 'bg-gradient-primary';
 
     this.form = this.fb.group({
-      firstName: 'Will',
-      lastName: 'Huang',
-      email: 'doggy.huang@gmail.com',
-      password: '123123123',
-      password2: '123123123'
+      firstName: this.fb.control('Will', [Validators.required]),
+      lastName: ['Huang', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8), Validators.maxLength(16)
+      ]],
+      password2: ['', [
+        Validators.required,
+        Validators.minLength(8), Validators.maxLength(16)
+      ]]
     });
   }
 

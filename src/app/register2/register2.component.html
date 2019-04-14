@@ -9,37 +9,62 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
-            <form class="user" [formGroup]="form" (ngSubmit)="doSubmit(f)" #f="ngForm">
+            <pre>form.value = {{form.value|json}}
+form.valid = {{form.valid}}
+form.invalid = {{form.invalid}}
+form.pristine = {{form.pristine}}
+form.dirty = {{form.dirty}}
+form.touched = {{form.touched}}
+form.untouched = {{form.untouched}}
+form.enabled = {{form.enabled}}
+form.disabled = {{form.disabled}}
+form.errors = {{form.errors|json}}</pre>
+            <form class="user" [formGroup]="form" (ngSubmit)="doSubmit(form)" #f="ngForm">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user"
                          formControlName="firstName"
+                         [class.error]="form.get('firstName').invalid && (f.submitted || form.get('firstName').dirty )"
                          placeholder="First Name">
+                  <pre>form.get('firstName').value = {{form.get('firstName').value}}
+form.get('firstName').valid = {{form.get('firstName').valid}}
+form.get('firstName').invalid = {{form.get('firstName').invalid}}
+form.get('firstName').pristine = {{form.get('firstName').pristine}}
+form.get('firstName').dirty = {{form.get('firstName').dirty}}
+form.get('firstName').touched = {{form.get('firstName').touched}}
+form.get('firstName').untouched = {{form.get('firstName').untouched}}
+form.get('firstName').enabled = {{form.get('firstName').enabled}}
+form.get('firstName').disabled = {{form.get('firstName').disabled}}
+form.get('firstName').errors = {{form.get('firstName').errors|json}}</pre>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user"
                          formControlName="lastName"
+                         [class.error]="form.get('lastName').invalid && (f.submitted || form.get('lastName').dirty )"
                          placeholder="Last Name">
                 </div>
               </div>
               <div class="form-group">
                 <input type="email" class="form-control form-control-user"
                        formControlName="email"
+                       [class.error]="form.get('email').invalid && (f.submitted || form.get('email').touched )"
                        placeholder="Email Address">
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control form-control-user"
                          formControlName="password"
+                         [class.error]="form.get('password').invalid && (f.submitted)"
                          placeholder="Password">
                 </div>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user"
                          formControlName="password2"
+                         [class.error]="form.get('password2').invalid && (f.submitted)"
                          placeholder="Repeat Password">
                 </div>
               </div>
-              <a href="login.html" class="btn btn-primary btn-user btn-block"> Register Account </a>
+              <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" [disabled]="f.invalid">
               <hr>
               <a href="index.html" class="btn btn-google btn-user btn-block">
                 <i class="fab fa-google fa-fw"></i> Register with Google </a>
