@@ -12007,6 +12007,6 @@ body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
 
-.ng-invalid:not(form) {
+.ng-invalid.error:not(form) {
   border-left: 5px solid #a94442; /* red */
 }
