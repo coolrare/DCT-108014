@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators, FormControl, FormArray } from '@angular/forms';
 import { passwordValidator1Fn, passwordValidator2Fn, compareEqual } from '../shared/passwordValidator1Fn';
 
 @Component({
@@ -29,6 +29,11 @@ export class Register2Component implements OnInit {
         Validators.minLength(8), Validators.maxLength(16)
       ]]
     });
+  }
+
+  addNewEmail() {
+    const emails = this.form.get('emails') as FormArray;
+    emails.push(this.fb.control('', [Validators.required, Validators.email]));
   }
 
   doSubmit(form: NgForm) {

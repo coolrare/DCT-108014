@@ -30,8 +30,13 @@
                        [formControlName]="idx"
                        [class.has-error]="email.invalid && (f.submitted || email.touched )"
                        placeholder="Email Address">
-                  <pre *ngIf="email['errors']?.required">請輸入 Email 地址</pre>
-                  <pre *ngIf="email['errors']?.email">請輸入合法的 Email 地址</pre>
+                  <pre *ngIf="email.invalid && (f.submitted || email.touched ) && email['errors']?.required">請輸入 Email 地址</pre>
+                  <pre *ngIf="email.invalid && (f.submitted || email.touched ) && email['errors']?.email">請輸入合法的 Email 地址</pre>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <button type="button" (click)="addNewEmail()">+</button>
+                </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
