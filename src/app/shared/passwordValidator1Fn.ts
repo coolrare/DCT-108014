@@ -13,8 +13,7 @@ export function compareEqual(fieldName: string): ValidatorFn {
     }
     if (control.parent.get(fieldName).value === control.value) {
       return null;
-    }
-    else {
+    } else {
       return { compareEqual: true };
     }
   };
