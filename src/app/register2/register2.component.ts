@@ -1,19 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-
-function compareEqual(fieldName: string): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    if (!control.parent) {
-      return null;
-    }
-    if (control.parent.get(fieldName).value === control.value) {
-      return null;
-    } else {
-      return { compareEqual: true };
-    }
-  };
-}
-
+import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angular/forms';
+import { passwordValidator1Fn, passwordValidator2Fn, compareEqual } from '../shared/passwordValidator1Fn';
 
 @Component({
   selector: 'app-register2',
@@ -33,10 +20,7 @@ export class Register2Component implements OnInit {
       firstName: this.fb.control('Will', [Validators.required]),
       lastName: ['Huang', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(8), Validators.maxLength(16)
-      ]],
+      password: ['', [passwordValidator1Fn, passwordValidator2Fn]],
       password2: ['', [
         Validators.required, compareEqual('password'),
         Validators.minLength(8), Validators.maxLength(16)
