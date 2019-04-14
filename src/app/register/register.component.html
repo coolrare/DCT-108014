@@ -50,6 +50,9 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
                        name="email" [(ngModel)]="data.email" required email
                        #tEmail="ngModel"
                        placeholder="Email Address">
+                  <pre *ngIf="tEmail['errors']?.required">請輸入 Email 地址</pre>
+                  <pre *ngIf="tEmail['errors']?.email">請輸入合法的 Email 地址</pre>
+                  <pre>{{ tEmail.errors | json }}</pre>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
