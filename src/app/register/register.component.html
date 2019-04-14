@@ -11,12 +11,33 @@
             </div>
             <pre>{{ data | json }}</pre>
             <pre>{{ f.value | json }}</pre>
-            <form class="user" #f="ngForm">
+            <pre>f.value = {{f.value|json}}
+f.valid = {{f.valid}}
+f.invalid = {{f.invalid}}
+f.pristine = {{f.pristine}}
+f.dirty = {{f.dirty}}
+f.touched = {{f.touched}}
+f.untouched = {{f.untouched}}
+f.enabled = {{f.enabled}}
+f.disabled = {{f.disabled}}
+f.errors = {{f.errors|json}}</pre>
+            <form class="user" #f="ngForm" (ngSubmit)="doSubmit(f)">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control form-control-user"
                          name="fName" [(ngModel)]="data.firstName" required
+                         #tFirstName="ngModel"
                          placeholder="First Name">
+                  <pre>tFirstName.value = {{tFirstName.value}}
+tFirstName.valid = {{tFirstName.valid}}
+tFirstName.invalid = {{tFirstName.invalid}}
+tFirstName.pristine = {{tFirstName.pristine}}
+tFirstName.dirty = {{tFirstName.dirty}}
+tFirstName.touched = {{tFirstName.touched}}
+tFirstName.untouched = {{tFirstName.untouched}}
+tFirstName.enabled = {{tFirstName.enabled}}
+tFirstName.disabled = {{tFirstName.disabled}}
+tFirstName.errors = {{tFirstName.errors|json}}</pre>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user"
@@ -36,13 +57,12 @@
                          placeholder="Password">
                 </div>
                 <div class="col-sm-6">
-                  <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
-                         [(ngModel)]="data.password2" required
-                         [ngModelOptions]="{standalone: true}"
+                  <input type="password" class="form-control form-control-user"
+                         name="password2" [(ngModel)]="data.password2" required
                          placeholder="Repeat Password">
                 </div>
               </div>
-              <a href="login.html" class="btn btn-primary btn-user btn-block"> Register Account </a>
+              <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" [disabled]="f.invalid">
               <hr>
               <a href="index.html" class="btn btn-google btn-user btn-block">
                 <i class="fab fa-google fa-fw"></i> Register with Google </a>
