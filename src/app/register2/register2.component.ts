@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators, FormControl, FormArray } from '@angular/forms';
-import { passwordValidator1Fn, passwordValidator2Fn, compareEqual, checkUniqEmail } from '../shared/passwordValidator1Fn';
+import { passwordValidator1Fn, passwordValidator2Fn, compareEqual, checkUniqEmail } from '../shared/MyValidators';
 import { HttpClient } from '@angular/common/http';
 
 export interface UserProfile {
