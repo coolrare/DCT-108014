@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+
+function compareEqual(fieldName: string): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (!control.parent) {
+      return null;
+    }
+    if (control.parent.get(fieldName).value === control.value) {
+      return null;
+    } else {
+      return { compareEqual: true };
+    }
+  };
+}
+
 
 @Component({
   selector: 'app-register2',
@@ -24,7 +38,7 @@ export class Register2Component implements OnInit {
         Validators.minLength(8), Validators.maxLength(16)
       ]],
       password2: ['', [
-        Validators.required,
+        Validators.required, compareEqual('password'),
         Validators.minLength(8), Validators.maxLength(16)
       ]]
     });
@@ -36,8 +50,8 @@ export class Register2Component implements OnInit {
     }
   }
 
-  setDisabled(c: NgModel) {
-    c.control.disable();
+  setDisabled(c: FormControl) {
+    c.disable();
   }
 
 }

@@ -65,6 +65,7 @@ form.get('firstName').errors = {{form.get('firstName').errors|json}}</pre>
                          formControlName="password2"
                          [class.has-error]="form.get('password2').invalid && (f.submitted)"
                          placeholder="Repeat Password">
+                  <pre>{{ form.get('password2').errors | json }}</pre>
                 </div>
               </div>
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" [disabled]="f.invalid">
