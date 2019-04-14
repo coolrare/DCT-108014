@@ -9,17 +9,7 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
-            <pre>form.value = {{form.value|json}}
-form.valid = {{form.valid}}
-form.invalid = {{form.invalid}}
-form.pristine = {{form.pristine}}
-form.dirty = {{form.dirty}}
-form.touched = {{form.touched}}
-form.untouched = {{form.untouched}}
-form.enabled = {{form.enabled}}
-form.disabled = {{form.disabled}}
-form.status = {{form.status}}
-form.errors = {{form.errors|json}}</pre>
+            <pre>form.value = {{form.value|json}}</pre>
             <form class="user" [formGroup]="form" (ngSubmit)="doSubmit(form)" #f="ngForm">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -27,16 +17,6 @@ form.errors = {{form.errors|json}}</pre>
                          formControlName="firstName"
                          [class.has-error]="form.get('firstName').invalid && (f.submitted || form.get('firstName').dirty )"
                          placeholder="First Name">
-                  <pre>form.get('firstName').value = {{form.get('firstName').value}}
-form.get('firstName').valid = {{form.get('firstName').valid}}
-form.get('firstName').invalid = {{form.get('firstName').invalid}}
-form.get('firstName').pristine = {{form.get('firstName').pristine}}
-form.get('firstName').dirty = {{form.get('firstName').dirty}}
-form.get('firstName').touched = {{form.get('firstName').touched}}
-form.get('firstName').untouched = {{form.get('firstName').untouched}}
-form.get('firstName').enabled = {{form.get('firstName').enabled}}
-form.get('firstName').disabled = {{form.get('firstName').disabled}}
-form.get('firstName').errors = {{form.get('firstName').errors|json}}</pre>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control form-control-user"
@@ -52,7 +32,6 @@ form.get('firstName').errors = {{form.get('firstName').errors|json}}</pre>
                        placeholder="Email Address">
                   <pre *ngIf="form.get('email')['errors']?.required">請輸入 Email 地址</pre>
                   <pre *ngIf="form.get('email')['errors']?.email">請輸入合法的 Email 地址</pre>
-                  <pre>{{ form.get('email').errors | json }}</pre>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
