@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators, FormControl, FormArray } from '@angular/forms';
 import { passwordValidator1Fn, passwordValidator2Fn, compareEqual } from '../shared/passwordValidator1Fn';
+import { HttpClient } from '@angular/common/http';
+
+export interface UserProfile {
+  firstName: string;
+  lastName: string;
+  password: string;
+  password2: string;
+  emails: string[];
+}
+
 
 @Component({
   selector: 'app-register2',
@@ -9,18 +19,9 @@ import { passwordValidator1Fn, passwordValidator2Fn, compareEqual } from '../sha
 })
 export class Register2Component implements OnInit {
 
-  data = {
-    firstName: 'Will',
-    lastName: 'Huang',
-    password: '123123123',
-    password2: '123123123',
-    emails: [
-      'user1@example.com',
-      'user2@example.com'
-    ]
-  };
+  data = {};
   form: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
     document.body.id = '';
@@ -37,10 +38,15 @@ export class Register2Component implements OnInit {
     });
 
     this.form.addControl('emails', this.fb.array([]));
-    (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
-    (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
 
-    this.form.setValue(this.data);
+    this.http.get<UserProfile>('http://www.mocky.io/v2/5cb2f4173000007d00a78ce8')
+      .subscribe((user) => {
+        for (const email of user.emails) {
+          (this.form.get('emails') as FormArray).push(this.fb.control('', [Validators.required, Validators.email]));
+        }
+        this.data = user;
+        this.form.setValue(this.data);
+      });
   }
 
   resetForm() {
