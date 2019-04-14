@@ -57,13 +57,16 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control form-control-user"
-                         name="password" [(ngModel)]="data.password" required
+                         name="password" [(ngModel)]="data.password"
+                         required minlength="8" maxlength="16"
                          #tPassword="ngModel"
                          placeholder="Password">
                 </div>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user"
-                         name="password2" [(ngModel)]="data.password2" [required]="tPassword.valid"
+                         name="password2" [(ngModel)]="data.password2"
+                         [required]="tPassword.valid"
+                         minlength="8" maxlength="16"
                          [compareEqual]="tPassword.value"
                          #tPassword2="ngModel"
                          placeholder="Repeat Password">
