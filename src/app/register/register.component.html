@@ -61,8 +61,10 @@ tFirstName.errors = {{tFirstName.errors|json}}</pre>
                 <div class="col-sm-6">
                   <input type="password" class="form-control form-control-user"
                          name="password2" [(ngModel)]="data.password2" [required]="tPassword.valid"
+                         [compareEqual]="tPassword.value"
                          #tPassword2="ngModel"
                          placeholder="Repeat Password">
+                  <pre>{{ tPassword2.errors | json }}</pre>
                 </div>
               </div>
               <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" [disabled]="f.invalid">
